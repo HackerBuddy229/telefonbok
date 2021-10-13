@@ -1,0 +1,2 @@
+class Telefonbok:
+    _telefonbok = []

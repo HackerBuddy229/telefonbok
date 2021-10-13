@@ -1,0 +1,2 @@
+class TelefonbokSerializer:
+    pass
