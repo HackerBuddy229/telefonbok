@@ -5,3 +5,6 @@ class Contact:
     def __init__(self, name, num):
         self.name = name
         self.number = num
+
+    def format_output(self):
+        return self.name + " : " + self.number
