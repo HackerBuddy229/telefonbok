@@ -1,5 +1,10 @@
+from contact import Contact
+
+
+
+
 class Telefonbok:
-    _telefonbok = []
+    _phonebook = []
 
     def __init__(self):
         pass
@@ -7,8 +12,18 @@ class Telefonbok:
     # Adds a name with corresponding number to the phonebook
     # Name != other_names
     # number != other_numbers
-    def add(self):
-        pass
+    def add(self, name, number):
+       # check if name OR number exists
+        for contact in self._phonebook:
+            if contact.name == name or contact.number == number:
+                # TODO: Do error handeling
+                return None
+
+       # create contact
+        new_contact = Contact(name, number)
+
+       # append contact
+       self._phonebook.append(new_contact)
 
     # prints a contact to screen based on the name (also alias with the same number)
     def lookup(self):
