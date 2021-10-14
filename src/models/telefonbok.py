@@ -65,8 +65,18 @@ class Telefonbok:
         self._phonebook.contacts.append(contact_new)
 
     # change the number for a name [including aliases]
-    def change(self):
-        pass
+    def change(self, name, number):
+        # find number by name
+        origin = self._phonebook.search_with_name(name)
+        if origin is None:
+            print("user does not exist")
+
+        # get all contacts
+        contacts = self._phoneboook.get_by_number(origin.number)
+
+        # for to change
+        for contact in contacts:
+            contact.number = number
 
     # Saves the current instanceeof the phonebook to a filename
     def save(self):

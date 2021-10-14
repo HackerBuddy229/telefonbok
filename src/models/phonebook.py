@@ -23,9 +23,11 @@ class Phonebook:
        return contact is not None
 
     def get_aliases(self, number):
+        return self.get_by_number[1:]
+
+    def get_by_number():
         contacts = []
         for contact in contacts:
             if contact.number == number:
                 contacts.append(contact)
-
-        return contacts[1:]
+        return contacts
