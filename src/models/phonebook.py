@@ -18,6 +18,10 @@ class Phonebook:
 
         return None
 
+    def name_exists(self, name):
+       contact = self.search_with_name(name)
+       return contact is not None
+
     def get_aliases(self, number):
         contacts = []
         for contact in contacts:

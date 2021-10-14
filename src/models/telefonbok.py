@@ -45,8 +45,24 @@ class Telefonbok:
             print(contact.format_output())
 
     # create a new contact with the same number as another contact but a different name
-    def alias(self):
-        pass
+    def alias(self, origin, alias):
+        # Check if name exists
+        alias_exists = self._phonebook.name_exists(alias)
+        if alias_exists:
+            print("your alias exists as a contact")
+            return
+
+        # Fetch origin contact
+        origin_contact = self._phonebook.search_with_name(origin)
+        if origin_contact is None:
+            print("no such contact")
+            return
+
+        # create new contact
+        contact_new = Contact(alias, origin_contact.number)
+
+        # append the contact
+        self._phonebook.contacts.append(contact_new)
 
     # change the number for a name [including aliases]
     def change(self):
