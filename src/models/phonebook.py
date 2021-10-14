@@ -14,7 +14,6 @@ class Phonebook:
         for contact in self.contacts:
             if contact.name == name:
                 return contact
-
         return None
 
     def name_exists(self, name):
@@ -30,3 +29,9 @@ class Phonebook:
             if contact.number == number:
                 contacts.append(contact)
         return contacts
+
+    def number_exists(self, number):
+        for contact in self.contacts:
+            if contact.number == number:
+                return True
+        return False

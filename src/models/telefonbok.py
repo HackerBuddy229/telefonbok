@@ -15,6 +15,9 @@ class Telefonbok:
     def add(self, name, number):
         # check if name OR number exists
         exists = self._phonebook.name_or_number_exists(name, number)
+        if exists:
+            print("Name or Number exists")
+            return
 
         # create contact
         new_contact = Contact(name, number)
@@ -60,10 +63,17 @@ class Telefonbok:
 
     # change the number for a name [including aliases]
     def change(self, name, number):
+        # check if args are valid
+        not_valid = self._phonebook.number_exists(number)
+        if not_valid:
+            print("The contact does not exist or that number is already taken")
+            return
+
         # find number by name
         origin = self._phonebook.search_with_name(name)
         if origin is None:
             print("user does not exist")
+            return
 
         # get all contacts
         contacts = self._phonebook.get_by_number(origin.number)

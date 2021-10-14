@@ -56,11 +56,12 @@ def run():
         QueryResponse("change", 2, [None, None], program.change),
         QueryResponse("save", 1, [None], program.save),
         QueryResponse("load", 1, [None], program.load),
-        QueryResponse("exit", 0, [], exit_helper.exit)
+        QueryResponse("quit", 0, [], exit_helper.exit)
     ]
 
     query_definition = QueryDescriptor()
     query_definition.showPrompt = True
+    query_definition.prompt = "telebok>"
 
     tui = TuiFabricator(query_definition, command_definitions)
     tui.query_repeat(exit_helper.exitCondition)
