@@ -1,29 +1,25 @@
 from contact import Contact
-
-
+from phonebook import Phonebook
 
 
 class Telefonbok:
-    _phonebook = []
+    _phonebook = None
 
     def __init__(self):
-        pass
+        _phonebook = Phonebook()
 
     # Adds a name with corresponding number to the phonebook
     # Name != other_names
     # number != other_numbers
     def add(self, name, number):
        # check if name OR number exists
-        for contact in self._phonebook:
-            if contact.name == name or contact.number == number:
-                # TODO: Do error handeling
-                return None
+       exists = self._phonebook.name_or_number_exists(name, number) 
 
        # create contact
         new_contact = Contact(name, number)
 
        # append contact
-       self._phonebook.append(new_contact)
+       self._phonebook.contacts.append(new_contact)
 
     # prints a contact to screen based on the name (also alias with the same number)
     def lookup(self):
