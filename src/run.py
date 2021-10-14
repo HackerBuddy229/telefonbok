@@ -56,7 +56,8 @@ def run():
         QueryResponse("change", 2, [None, None], program.change),
         QueryResponse("save", 1, [None], program.save),
         QueryResponse("load", 1, [None], program.load),
-        QueryResponse("quit", 0, [], exit_helper.exit)
+        QueryResponse("quit", 0, [], exit_helper.exit),
+        QueryResponse("exit", 0, [], exit_helper.exit)
     ]
 
     query_definition = QueryDescriptor()

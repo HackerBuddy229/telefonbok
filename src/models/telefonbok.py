@@ -38,8 +38,8 @@ class Telefonbok:
         contacts = self._phonebook.get_by_number(primary_contact.number)
 
         # present list 
-        for contact in contacts:
-            print(contact.format_output())
+        # for contact in contacts:
+        print(contacts[0].format_output())
 
     # create a new contact with the same number as another contact but a different name
     def alias(self, origin, alias):
@@ -95,7 +95,7 @@ class Telefonbok:
         # fetch raw
         raw = FileStorageService.fetch_raw(filename)
 
-        # TODO: Add error handeling
+        # TODO: Add error handling
 
         # deserialize
         contacts = PhonebookSerializer.deserialize(raw)

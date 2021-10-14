@@ -7,4 +7,4 @@ class Contact:
         self.number = num
 
     def format_output(self):
-        return self.name + " : " + self.number
+        return self.number
