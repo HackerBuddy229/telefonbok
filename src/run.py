@@ -4,12 +4,16 @@ from tuiFabricator.TuiFabricator import TuiFabricator
 from tuiFabricator.QueryResponse import QueryResponse
 from tuiFabricator.QueryDescriptor import QueryDescriptor
 
+# Exit helper is part of the tui constructor repeated query
+
 
 class ExitHelper:
     exitCondition = [True]
 
     def exit(self):
         self.exitCondition[0] = False
+
+# Program is used as layer between tuiFabricator and telefonbok
 
 
 class Program:
@@ -49,6 +53,7 @@ def run():
     program = Program()
     exit_helper = ExitHelper()
 
+    # defines the possible commands along with their methods and args
     command_definitions = [
         QueryResponse("add", 2, [None, None], program.add),
         QueryResponse("lookup", 1, [None], program.lookup),
@@ -60,10 +65,12 @@ def run():
         QueryResponse("exit", 0, [], exit_helper.exit)
     ]
 
+    # defines the query prompt
     query_definition = QueryDescriptor()
     query_definition.showPrompt = True
     query_definition.prompt = "telebok>"
 
+    # creates and runs the tui
     tui = TuiFabricator(query_definition, command_definitions)
     tui.query_repeat(exit_helper.exitCondition)
 
