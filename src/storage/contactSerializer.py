@@ -16,7 +16,7 @@ class ContactSerializer:
             return None
 
         name = split_contact[0]
-        number = split_contact[2]
+        number = split_contact[1]
 
         # instance contact
         contact = Contact(name, number)

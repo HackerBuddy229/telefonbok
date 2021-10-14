@@ -1,14 +1,13 @@
-from contact import Contact
-from phonebook import Phonebook
+from models.contact import Contact
+from models.phonebook import Phonebook
 from storage.fileStorageService import FileStorageService
 from storage.phonebookSerializer import PhonebookSerializer
 
 
 class Telefonbok:
-    _phonebook = None
 
     def __init__(self):
-        _phonebook = Phonebook()
+        self._phonebook = Phonebook()
 
     # Adds a name with corresponding number to the phonebook
     # Name != other_names
@@ -25,8 +24,6 @@ class Telefonbok:
 
     # prints a contact to screen based on the name (also alias with the same number)
     def lookup(self, name):
-        contacts = []
-
         # check for names
         primary_contact = self._phonebook.search_with_name(name)
 
@@ -34,13 +31,8 @@ class Telefonbok:
             print("This name does not exist")
             return
 
-        contacts.append(primary_contact)
-
         # check for contacts with the number
-        aliases = self._phonebook.get_aliases(primary_contact.number)
-
-        if len(aliases) > 0:
-            contacts += aliases
+        contacts = self._phonebook.get_by_number(primary_contact.number)
 
         # present list 
         for contact in contacts:
@@ -74,7 +66,7 @@ class Telefonbok:
             print("user does not exist")
 
         # get all contacts
-        contacts = self._phoneboook.get_by_number(origin.number)
+        contacts = self._phonebook.get_by_number(origin.number)
 
         # for to change
         for contact in contacts:

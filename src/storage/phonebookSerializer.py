@@ -1,4 +1,4 @@
-from contactSerializer import ContactSerializer
+from storage.contactSerializer import ContactSerializer
 
 
 class PhonebookSerializer:
@@ -21,6 +21,7 @@ class PhonebookSerializer:
 
         # append deserialized row to product var
         for contact in split:
-            product.append(ContactSerializer.deserialize(contact))
+            if contact is not None and contact != "":
+                product.append(ContactSerializer.deserialize(contact))
 
         return product

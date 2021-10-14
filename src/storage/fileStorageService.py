@@ -6,7 +6,7 @@ class FileStorageService:
     @staticmethod
     def save_raw(path, raw):
         # open rw stream to path
-        stream = open(path, "rw", encoding="utf-8")
+        stream = open(path, "w", encoding="utf-8")
 
         # truncate to 0 bytes
         stream.truncate(0)
@@ -20,7 +20,7 @@ class FileStorageService:
     @staticmethod
     def fetch_raw(path):
         # open rw stream to path
-        stream = open(path, "rw", encoding="utf-8")
+        stream = open(path, "r", encoding="utf-8")
 
         raw = stream.read()
 

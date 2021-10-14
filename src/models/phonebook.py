@@ -1,8 +1,7 @@
 class Phonebook:
 
-
     def __init__(self):
-        contacts = []
+        self.contacts = []
 
     def name_or_number_exists(self, name, number):
         for contact in self.contacts:
@@ -10,7 +9,7 @@ class Phonebook:
                 return True
 
         return False
-    
+
     def search_with_name(self, name):
         for contact in self.contacts:
             if contact.name == name:
@@ -19,15 +18,15 @@ class Phonebook:
         return None
 
     def name_exists(self, name):
-       contact = self.search_with_name(name)
-       return contact is not None
+        contact = self.search_with_name(name)
+        return contact is not None
 
     def get_aliases(self, number):
-        return self.get_by_number[1:]
+        return self.get_by_number(number)[1:]
 
-    def get_by_number():
+    def get_by_number(self, number):
         contacts = []
-        for contact in contacts:
+        for contact in self.contacts:
             if contact.number == number:
                 contacts.append(contact)
         return contacts
