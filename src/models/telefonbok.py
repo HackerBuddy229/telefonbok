@@ -1,6 +1,6 @@
 from contact import Contact
 from phonebook import Phonebook
-from storage.fileStorageService import FileStorageService 
+from storage.fileStorageService import FileStorageService
 from storage.phonebookSerializer import PhonebookSerializer
 
 
@@ -14,13 +14,13 @@ class Telefonbok:
     # Name != other_names
     # number != other_numbers
     def add(self, name, number):
-       # check if name OR number exists
-        exists = self._phonebook.name_or_number_exists(name, number) 
+        # check if name OR number exists
+        exists = self._phonebook.name_or_number_exists(name, number)
 
-       # create contact
+        # create contact
         new_contact = Contact(name, number)
 
-       # append contact
+        # append contact
         self._phonebook.contacts.append(new_contact)
 
     # prints a contact to screen based on the name (also alias with the same number)
@@ -80,7 +80,7 @@ class Telefonbok:
         for contact in contacts:
             contact.number = number
 
-    # Saves the current instanceeof the phonebook to a filename
+    # Saves the current instance of the phonebook to a filename
     def save(self, filename):
         # serialize
         raw = PhonebookSerializer.serialize(self._phonebook.contacts)
@@ -99,4 +99,4 @@ class Telefonbok:
         contacts = PhonebookSerializer.deserialize(raw)
 
         # replace contacts
-        self._phonebook.contacts = contacts 
+        self._phonebook.contacts = contacts

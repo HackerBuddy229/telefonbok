@@ -3,21 +3,19 @@ from io import open
 
 class FileStorageService:
 
-        
     @staticmethod
     def save_raw(path, raw):
         # open rw stream to path
         stream = open(path, "rw", encoding="utf-8")
-        
+
         # truncate to 0 bytes
         stream.truncate(0)
 
         # write raw to stream
         stream.write(raw)
 
-        #close stream
+        # close stream
         stream.close()
-
 
     @staticmethod
     def fetch_raw(path):
@@ -26,8 +24,7 @@ class FileStorageService:
 
         raw = stream.read()
 
-        #close stream
+        # close stream
         stream.close()
 
         return raw
-
