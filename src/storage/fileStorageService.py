@@ -1,29 +1,33 @@
-import io
+from io import open
 
 
 class FileStorageService:
 
-    def __init__(self, path):
-
+        
+    @staticmethod
+    def save_raw(path, raw):
         # open rw stream to path
-        self.stream = io.open(path, "rw", encoding="utf-8")
-
-    def save_raw(self, raw):
-        if self.stream.closed:
-            return
-
+        stream = open(path, "rw", encoding="utf-8")
+        
         # truncate to 0 bytes
-        self.stream.truncate(0)
+        stream.truncate(0)
 
         # write raw to stream
-        self.stream.write(raw)
+        stream.write(raw)
 
-    def fetch_raw(self):
-        if self.stream.closed:
-            return
+        #close stream
+        stream.close()
 
-        raw = self.stream.read()
+
+    @staticmethod
+    def fetch_raw(path):
+        # open rw stream to path
+        stream = open(path, "rw", encoding="utf-8")
+
+        raw = stream.read()
+
+        #close stream
+        stream.close()
+
         return raw
 
-    def dispose(self):
-        self.stream.close()

@@ -1,5 +1,7 @@
 from contact import Contact
 from phonebook import Phonebook
+from storage.fileStorageService import FileStorageService 
+from storage.phonebookSerializer import PhonebookSerializer
 
 
 class Telefonbok:
@@ -79,9 +81,22 @@ class Telefonbok:
             contact.number = number
 
     # Saves the current instanceeof the phonebook to a filename
-    def save(self):
-        pass
+    def save(self, filename):
+        # serialize
+        raw = PhonebookSerializer.serialize(self._phonebook.contacts)
+
+        # write raw
+        FileStorageService.save_raw(filename, raw)
 
     # fetches a phonebook instance from a file
-    def load(self):
-        pass
+    def load(self, filename):
+        # fetch raw
+        raw = FileStorageService.fetch_raw(filename)
+
+        # TODO: Add error handeling
+
+        # deserialize
+        contacts = PhonebookSerializer.deserialize(raw)
+
+        # replace contacts
+        self._phonebook.contacts = contacts 
